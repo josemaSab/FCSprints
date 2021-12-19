@@ -101,7 +101,6 @@ public class TratamientoCSV {
                     ErrorFichero errorMalFormado = new ErrorFichero(TipoError.MAL_FORMADO, this.contadorLineas);
                     this.errores.add(errorMalFormado);
                     System.out.println(linea + ANSI_ROJO + "\t\t[ERROR] MAL FORMADO" + ANSI_RESET);
-                    sleep(100);
                 }
                 //Leemos otra linea y aumentamos el contador
                 linea = bufferLectura.readLine();
@@ -116,8 +115,6 @@ public class TratamientoCSV {
             System.err.println("El fichero no existe o la ruta es erronea: " + e.getMessage());
         } catch (IOException e) {
             System.out.println("Ha habido algun problema al leer el fichero: " + e.getMessage());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         } finally {
             //Cerramos el buffer de lectura.
             if (bufferLectura != null) {
