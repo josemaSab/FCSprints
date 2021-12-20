@@ -57,9 +57,10 @@ public class TratamientoCSV {
     //METODOS
 
     /**
-     * Metodo que realiza el tramiento del fichero y compruba que los campos son correctos,
-     * si son conrrectos los almacena en el ArrayList y si no son correctos nos muestra
-     * un mensaje de error.
+     * Metodo que realiza el tramiento del fichero y comprueba que los campos son correctos,
+     * si son conrrectos los almacena en el ArrayList y si no son correctos los almacena en
+     * el ArrayList de errores .Nos muestra por consola todo lo que va pasando y al final
+     * muestra por consola un resumen de los usuarios guardados , errores y lineas procesadas
      */
     public void tratamientoFichero() {
         //Creamos el buffer de lectura
@@ -81,26 +82,26 @@ public class TratamientoCSV {
                         //Creamos un error y lo agragamos al listado de errores
                         ErrorFichero errorEmail = new ErrorFichero(TipoError.EMAIL_DUPLICADO, this.contadorLineas);
                         this.errores.add(errorEmail);
-                        System.out.println(linea + ANSI_ROJO + "\t\t[ERROR] EMAIL" + ANSI_RESET);
+                        System.out.println(this.contadorLineas + ": " + ANSI_ROJO + "[ERROR] EMAIL \t\t\t" + ANSI_RESET + linea);
                         //campos[2] corresponde al nombre de usuario
                     } else if (this.compruebaNomUsuariosDuplicados(campos[2])) {
                         //Creamos un error y lo agragamos al listado de errores
                         ErrorFichero errorNombreUsuario = new ErrorFichero(TipoError.NOMBRE_USUARIO_DUPLICADO,
                                 this.contadorLineas);
                         this.errores.add(errorNombreUsuario);
-                        System.out.println(linea + ANSI_ROJO + "\t\t[ERROR] NOMBRE USUARIO" + ANSI_RESET);
+                        System.out.println(this.contadorLineas + ": " + ANSI_ROJO + "[ERROR] NOMBRE USUARIO \t" + ANSI_RESET + linea );
                     } else {
                         //Creamos el usuario y lo añadimos al listado de usuarios
                         Usuario usuario = new Usuario(campos[0], campos[1], campos[2]);
                         this.usuarios.add(usuario);
-                        System.out.println(linea + ANSI_VERDE + "\t\t[OK]" + ANSI_RESET);
+                        System.out.println(this.contadorLineas + ": " + ANSI_VERDE + "[OK]\t\t\t\t\t\t" + ANSI_RESET + linea);
                     }
 
                 } else {
                     //Creamos un error y lo agregamos a la lista de errores
                     ErrorFichero errorMalFormado = new ErrorFichero(TipoError.MAL_FORMADO, this.contadorLineas);
                     this.errores.add(errorMalFormado);
-                    System.out.println(linea + ANSI_ROJO + "\t\t[ERROR] MAL FORMADO" + ANSI_RESET);
+                    System.out.println(this.contadorLineas + ": " + ANSI_ROJO + "[ERROR] MAL FORMADO\t\t" + ANSI_RESET + linea);
                 }
                 //Leemos otra linea y aumentamos el contador
                 linea = bufferLectura.readLine();
@@ -109,12 +110,17 @@ public class TratamientoCSV {
             }
             //MOSTRAMOS RESULTADOS FINALES
             this.mostrarLineasProcesadas();
+            //Paramos para que no se superpongan cosas en la consola
+            sleep(50);
             this.mostrarUsuarios();
+            sleep(50);
             this.mostrarErrores();
         } catch (FileNotFoundException e) {
             System.err.println("El fichero no existe o la ruta es erronea: " + e.getMessage());
         } catch (IOException e) {
             System.out.println("Ha habido algun problema al leer el fichero: " + e.getMessage());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             //Cerramos el buffer de lectura.
             if (bufferLectura != null) {
@@ -215,7 +221,7 @@ public class TratamientoCSV {
      */
     public void mostrarLineasProcesadas() {
         System.out.println("-------- LINEAS PROCESADAS -------");
-        System.out.println(ANSI_VERDE + "Total de lineas procesadas: " + this.contadorLineas + ANSI_RESET);
+        System.out.println(ANSI_VERDE + "Total de lineas procesadas: " + (this.contadorLineas-1) + ANSI_RESET);
     }
 
     //GETTER Y SETTER
