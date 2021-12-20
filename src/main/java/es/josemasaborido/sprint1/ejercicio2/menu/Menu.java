@@ -1,6 +1,7 @@
 package es.josemasaborido.sprint1.ejercicio2.menu;
 
 import es.josemasaborido.sprint1.ejercicio2.models.Usuario;
+import es.josemasaborido.sprint1.ejercicio2.service.LoginService;
 import es.josemasaborido.sprint1.ejercicio2.service.RegistroService;
 import es.josemasaborido.sprint1.ejercicio2.ui.Pantallas;
 
@@ -24,11 +25,13 @@ public class Menu {
     //ATRIBUTOS
     private int opcionElegida;
     private RegistroService registroService;
+    private LoginService loginService;
 
     //CONSTRUCTORES
 
-    public Menu(RegistroService registroService) {
+    public Menu(RegistroService registroService, LoginService loginService) {
         this.registroService = registroService;
+        this.loginService = loginService;
         opcionElegida = -1;
         Pantallas.muestraMenu();
         Pantallas.muestraOpciones();
@@ -77,7 +80,7 @@ public class Menu {
                         break;
                     case 2:
                         Pantallas.muestraLogin();
-                        Pantallas.muestraMenu();
+                        this.opcionLogin();
                         break;
                 }
             }catch(NumberFormatException e){
@@ -87,6 +90,9 @@ public class Menu {
 
     }
 
+    /**
+     * Metodo en el que se introducen los datos para realizar el registro
+     */
     public void opcionRegistro(){
         String email;
         String password;
@@ -103,6 +109,23 @@ public class Menu {
             this.eligeOpcion();
         }
 
+    }
+
+    /**
+     * Metodo en el que se introducen los datos para realizar el login
+     */
+    public void opcionLogin(){
+        String email;
+        String password;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce el email del usuario:");
+        email = sc.nextLine();
+        System.out.println("Introduce el password del usuario:");
+        sc = new Scanner(System.in);
+        password = sc.nextLine();
+        loginService.muestraMensajes(loginService.login(email, password));
+        Pantallas.muestraOpciones();
+        this.eligeOpcion();
     }
 
     //GETTER Y SETTER

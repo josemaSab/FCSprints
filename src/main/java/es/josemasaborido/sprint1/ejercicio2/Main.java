@@ -2,6 +2,7 @@ package es.josemasaborido.sprint1.ejercicio2;
 
 import es.josemasaborido.sprint1.ejercicio2.menu.Menu;
 import es.josemasaborido.sprint1.ejercicio2.models.Usuario;
+import es.josemasaborido.sprint1.ejercicio2.service.LoginService;
 import es.josemasaborido.sprint1.ejercicio2.service.RegistroService;
 
 import java.util.ArrayList;
@@ -30,9 +31,14 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) {
+        //Creamos el ArrayLista para el almacenamiento de los Usuarios
         List<Usuario> almacenamiento = new ArrayList<>();
+        //Instanciamos el servicio de registro
         RegistroService registroService = new RegistroService(almacenamiento);
-        Menu menu = new Menu(registroService);
+        //Instanciamos el servicio de login
+        LoginService loginService=new LoginService(almacenamiento);
+        //Instanciamos el menu que arrancará la lógica de la aplicacion
+        Menu menu = new Menu(registroService, loginService);
 
     }
 }

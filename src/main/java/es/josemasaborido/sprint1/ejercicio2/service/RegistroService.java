@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 /**
  * Ejercicio  Sprint 1 de Fisrt Commit
  * <p>
- * Clase que defineel registro
+ * Clase que define el registro
  *
  * @author josema
  * @version 1.0
@@ -49,19 +49,21 @@ public class RegistroService implements RegistroRepository {
     public boolean register(String email, String password) {
         String hashPwd;
         //Comprobamos que el correo esta bien formado y no exite en la base de datos
-        if(this.emailBienFormado(email) && !this.buscaEmailDuplicado(email)) {
-            //Si el hasheo del password es null realiza el registro
-            if (this.hashPassword(password) != null) {
-                //Hasheamos el password
-                hashPwd = this.hashPassword(password);
-                //Creamos el usuario
-                Usuario usuario = new Usuario(email, hashPwd);
-                //Lo almacenamos
-                this.almacenamiento.add(usuario);
-                System.out.println("Usuario: "+ email + " | Password: " + password + " almacenado con exito.");
-                System.out.println("El hash es: "+ hashPwd);
-            }else{
-                System.err.println("Error al hashear el password.");
+        if(this.emailBienFormado(email)) {
+            if(!this.buscaEmailDuplicado(email)) {
+                //Si el hasheo del password es null realiza el registro
+                if (this.hashPassword(password) != null) {
+                    //Hasheamos el password
+                    hashPwd = this.hashPassword(password);
+                    //Creamos el usuario
+                    Usuario usuario = new Usuario(email, hashPwd);
+                    //Lo almacenamos
+                    this.almacenamiento.add(usuario);
+                    System.out.println("Usuario: " + email + " | Password: " + password + " almacenado con exito.");
+                    System.out.println("El hash es: " + hashPwd);
+                } else {
+                    System.err.println("Error al hashear el password.");
+                }
             }
         }
         return false;
@@ -72,7 +74,7 @@ public class RegistroService implements RegistroRepository {
      * @param password del usuario
      * @return el password hasheado en MD5 y si ha habido algun problema devulve null
      */
-    public String hashPassword(String password) {
+    public static String hashPassword(String password) {
         String hash = null;
         try {
             //Instanciamos messageDigest y definimos SHA-512 como protocolo de cifrado
@@ -113,8 +115,9 @@ public class RegistroService implements RegistroRepository {
      * @return true si existe y false si no existe
      */
     public boolean buscaEmailDuplicado(String email){
-        for(Usuario usuario: almacenamiento){
+        for(Usuario usuario: this.almacenamiento){
             if(usuario.getEmail().equals(email)){
+                System.err.println("El email ya existe en la base de datos");
                 return true;
             }
         }
