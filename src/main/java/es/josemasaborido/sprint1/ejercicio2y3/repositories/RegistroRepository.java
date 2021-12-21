@@ -1,4 +1,4 @@
-package es.josemasaborido.sprint1.ejercicio2.repositories;
+package es.josemasaborido.sprint1.ejercicio2y3.repositories;
 /**
  * Ejercicio 2 Sprint 1 de Fisrt Commit
  * <p>

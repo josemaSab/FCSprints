@@ -1,11 +1,10 @@
-package es.josemasaborido.sprint1.ejercicio2;
+package es.josemasaborido.sprint1.ejercicio2y3;
 
-import es.josemasaborido.sprint1.ejercicio2.menu.Menu;
-import es.josemasaborido.sprint1.ejercicio2.models.Usuario;
-import es.josemasaborido.sprint1.ejercicio2.security.HashArgon2;
-import es.josemasaborido.sprint1.ejercicio2.security.HashMD5;
-import es.josemasaborido.sprint1.ejercicio2.service.LoginService;
-import es.josemasaborido.sprint1.ejercicio2.service.RegistroService;
+import es.josemasaborido.sprint1.ejercicio2y3.menu.Menu;
+import es.josemasaborido.sprint1.ejercicio2y3.models.Usuario;
+import es.josemasaborido.sprint1.ejercicio2y3.security.HashArgon2;
+import es.josemasaborido.sprint1.ejercicio2y3.service.LoginService;
+import es.josemasaborido.sprint1.ejercicio2y3.service.RegistroService;
 
 import java.util.ArrayList;
 import java.util.List;

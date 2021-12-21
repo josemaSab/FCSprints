@@ -1,4 +1,4 @@
-package es.josemasaborido.sprint1.ejercicio2.ui;
+package es.josemasaborido.sprint1.ejercicio2y3.ui;
 
 /**
  * Ejercicio  Sprint 1 de Fisrt Commit

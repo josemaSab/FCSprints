@@ -1,9 +1,8 @@
-package es.josemasaborido.sprint1.ejercicio2.service;
+package es.josemasaborido.sprint1.ejercicio2y3.service;
 
-import es.josemasaborido.sprint1.ejercicio2.models.Usuario;
-import es.josemasaborido.sprint1.ejercicio2.security.HashMD5;
-import es.josemasaborido.sprint1.ejercicio2.security.PasswordHasheable;
-import es.josemasaborido.sprint1.ejercicio2.ui.Colores;
+import es.josemasaborido.sprint1.ejercicio2y3.models.Usuario;
+import es.josemasaborido.sprint1.ejercicio2y3.security.PasswordHasheable;
+import es.josemasaborido.sprint1.ejercicio2y3.ui.Colores;
 
 import java.util.ArrayList;
 import java.util.List;

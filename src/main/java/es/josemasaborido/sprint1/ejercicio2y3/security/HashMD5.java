@@ -1,4 +1,4 @@
-package es.josemasaborido.sprint1.ejercicio2.security;
+package es.josemasaborido.sprint1.ejercicio2y3.security;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

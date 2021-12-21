@@ -1,4 +1,4 @@
-package es.josemasaborido.sprint1.ejercicio2.security;
+package es.josemasaborido.sprint1.ejercicio2y3.security;
 
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;

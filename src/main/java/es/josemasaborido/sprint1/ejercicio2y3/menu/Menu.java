@@ -1,8 +1,8 @@
-package es.josemasaborido.sprint1.ejercicio2.menu;
+package es.josemasaborido.sprint1.ejercicio2y3.menu;
 
-import es.josemasaborido.sprint1.ejercicio2.service.LoginService;
-import es.josemasaborido.sprint1.ejercicio2.service.RegistroService;
-import es.josemasaborido.sprint1.ejercicio2.ui.Pantallas;
+import es.josemasaborido.sprint1.ejercicio2y3.service.LoginService;
+import es.josemasaborido.sprint1.ejercicio2y3.service.RegistroService;
+import es.josemasaborido.sprint1.ejercicio2y3.ui.Pantallas;
 
 import java.util.Scanner;
 
