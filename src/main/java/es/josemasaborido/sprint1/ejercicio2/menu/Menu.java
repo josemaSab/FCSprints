@@ -1,13 +1,9 @@
 package es.josemasaborido.sprint1.ejercicio2.menu;
 
-import es.josemasaborido.sprint1.ejercicio2.models.Usuario;
 import es.josemasaborido.sprint1.ejercicio2.service.LoginService;
 import es.josemasaborido.sprint1.ejercicio2.service.RegistroService;
 import es.josemasaborido.sprint1.ejercicio2.ui.Pantallas;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import static java.lang.Thread.sleep;
@@ -44,7 +40,7 @@ public class Menu {
      * es 0 para salir de la aplicacion
      */
     public void opciones() {
-        while(this.opcionElegida!=0){
+        while (this.opcionElegida != 0) {
             this.eligeOpcion();
         }
     }
@@ -55,7 +51,7 @@ public class Menu {
     public void eligeOpcion() {
         Scanner sc = new Scanner(System.in);
         //Se repite la hasta que se elija una opcion correcta
-        do{
+        do {
             //Paramos 50 milis para que si hay un error se muestre antes de volver  a solicitar
             //que elijamos una opcion
             try {
@@ -66,10 +62,10 @@ public class Menu {
             System.out.println("ELIGE UNA OPCION: ");
             try {
                 this.opcionElegida = Integer.parseInt(sc.nextLine());
-                if(this.opcionElegida > 2){
+                if (this.opcionElegida > 2) {
                     System.err.println("La opción elegida no es correcta.");
                 }
-                switch(this.opcionElegida){
+                switch (this.opcionElegida) {
                     //OPCION SALIR
                     case 0:
                         System.exit(0);
@@ -83,17 +79,17 @@ public class Menu {
                         this.opcionLogin();
                         break;
                 }
-            }catch(NumberFormatException e){
+            } catch (NumberFormatException e) {
                 System.err.println("El valor introducido no es correcto.");
             }
-        }while(this.opcionElegida>=0 && this.opcionElegida<=2);
+        } while (this.opcionElegida >= 0 && this.opcionElegida <= 2);
 
     }
 
     /**
      * Metodo en el que se introducen los datos para realizar el registro
      */
-    public void opcionRegistro(){
+    public void opcionRegistro() {
         String email;
         String password;
         boolean esRegistrado;
@@ -104,7 +100,7 @@ public class Menu {
         sc = new Scanner(System.in);
         password = sc.nextLine();
         esRegistrado = this.registroService.register(email, password);
-        if(!esRegistrado){
+        if (!esRegistrado) {
             Pantallas.muestraOpciones();
             this.eligeOpcion();
         }
@@ -114,7 +110,7 @@ public class Menu {
     /**
      * Metodo en el que se introducen los datos para realizar el login
      */
-    public void opcionLogin(){
+    public void opcionLogin() {
         String email;
         String password;
         Scanner sc = new Scanner(System.in);
