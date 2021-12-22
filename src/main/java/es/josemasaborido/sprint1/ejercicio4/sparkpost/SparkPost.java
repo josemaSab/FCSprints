@@ -13,7 +13,7 @@ public class SparkPost {
 
     //ATRIBUTOS
 
-    private final String API_KEY="b275f49495d342f18f146161093b52ec93fbfb47";
+    private final String API_KEY="AKI PONER TU API KEY";
     Client cliente;
 
     //CONSTRUCTORES

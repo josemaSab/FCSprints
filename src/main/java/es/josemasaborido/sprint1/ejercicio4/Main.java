@@ -2,6 +2,7 @@ package es.josemasaborido.sprint1.ejercicio4;
 
 import com.sparkpost.Client;
 import com.sparkpost.exception.SparkPostException;
+import com.sparkpost.model.responses.Response;
 import es.josemasaborido.sprint1.ejercicio4.sparkpost.SparkPost;
 
 
@@ -16,7 +17,10 @@ import es.josemasaborido.sprint1.ejercicio4.sparkpost.SparkPost;
  */
 public class Main {
     public static void main(String[] args) throws SparkPostException {
-        String de = "jsaborido@devsyn.net";
+
+        //DEFINIMOS LA CONFIGURACION DEL CORREO
+
+        String de = "holaquease@sparkpost.devsyn.net";
         String para = "j.saborido@josemasaborido.es";
         String asunto = "Prueba libreria SparkPost";
         String cuerpo = "Buenas noches,\n Esto es una prueba de correo electronico con la"
@@ -24,8 +28,12 @@ public class Main {
                 "OpenBootcamp";
         String html = "<b>Recibe un cordial saludo</b>";
 
+        //Instanciamos un objeto Sparkpost
         SparkPost sparkPost = new SparkPost();
-        sparkPost.getCliente().sendMessage(de, para, asunto, cuerpo, html);
+        //Enviamos el mensaje
+        Response response = sparkPost.getCliente().sendMessage(de, para, asunto, cuerpo, html);
+        //Mostramos el Response
+        System.out.println(response);
     }
 
 
