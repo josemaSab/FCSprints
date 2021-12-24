@@ -1,5 +1,7 @@
 package es.josemasaborido.sprint1.ejercicio5.entities;
 
+import es.josemasaborido.sprint1.ejercicio5.persistencia.GeneradorId;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class Certificacion {
 
     //ATRIBUTOS
 
-    private Long idCertificacion;
+    private static Long idCertificacion = 0L;
     private String certificacion;
 
     //Relaciones
@@ -26,11 +28,10 @@ public class Certificacion {
 
     /**
      * Constructor con parametros
-     * @param idCertificacion id de la certificacion
      * @param certificacion nombre la certificacion
      */
-    public Certificacion(Long idCertificacion, String certificacion) {
-        this.idCertificacion = idCertificacion;
+    public Certificacion(String certificacion) {
+        this.idCertificacion = GeneradorId.generarId(idCertificacion);
         this.certificacion = certificacion;
     }
 

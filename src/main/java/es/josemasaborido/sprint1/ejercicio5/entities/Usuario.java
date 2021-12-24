@@ -1,5 +1,7 @@
 package es.josemasaborido.sprint1.ejercicio5.entities;
 
+import es.josemasaborido.sprint1.ejercicio5.persistencia.GeneradorId;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
 public class Usuario {
 
     //ATRIBUTOS
-    private Long idUsuario;
+    private static Long idUsuario = 0L;
     private String nombreUsuario;
     private String password;
     private String email;
@@ -26,13 +28,12 @@ public class Usuario {
 
     /**
      * Constructor con todos lo atributos
-     * @param idUsuario id del usuario
      * @param nombreUsuario nombre del usuario
      * @param password password del usuario
      * @param email email del usuario
      */
-    public Usuario(Long idUsuario, String nombreUsuario, String password, String email) {
-        this.idUsuario = idUsuario;
+    public Usuario(String nombreUsuario, String password, String email) {
+        this.idUsuario = GeneradorId.generarId(idUsuario);
         this.nombreUsuario = nombreUsuario;
         this.password = password;
         this.email = email;

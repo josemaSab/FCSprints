@@ -1,5 +1,8 @@
 package es.josemasaborido.sprint1.ejercicio5.entities;
 
+import es.josemasaborido.sprint1.ejercicio5.entities.enums.Presencialidad;
+import es.josemasaborido.sprint1.ejercicio5.persistencia.GeneradorId;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +17,7 @@ import java.util.List;
 public class Alumno {
 
     //ATRIBUTOS
-    private Long idAlumno;
+    private static Long idAlumno = 0L;//Será clave Primaria
     private String nombreAlumno;
     private String apellidos;
     private String emailAlumno;
@@ -33,7 +36,6 @@ public class Alumno {
 
     /**
      * Constructor con parametros
-     * @param idAlumno id del alumno
      * @param nombreAlumno nombre del alumno
      * @param apellidos apellidos del alumno
      * @param emailAlumno email del alumno
@@ -43,9 +45,9 @@ public class Alumno {
      * @param foto ruta de la foto
      * @param curriculum ruta del curriculum
      */
-    public Alumno(Long idAlumno, String nombreAlumno, String apellidos, String emailAlumno, String telefono,
+    public Alumno(String nombreAlumno, String apellidos, String emailAlumno, String telefono,
                   Presencialidad presencialidad, Boolean traslado, String foto, String curriculum) {
-        this.idAlumno = idAlumno;
+        this.idAlumno = GeneradorId.generarId(idAlumno);
         this.nombreAlumno = nombreAlumno;
         this.apellidos = apellidos;
         this.emailAlumno = emailAlumno;

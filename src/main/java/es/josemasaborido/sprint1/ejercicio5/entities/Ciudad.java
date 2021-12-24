@@ -1,4 +1,7 @@
 package es.josemasaborido.sprint1.ejercicio5.entities;
+
+import es.josemasaborido.sprint1.ejercicio5.persistencia.GeneradorId;
+
 /**
  * Ejercicio 4 Sprint 1 de Fisrt Commit
  * Ejercicio 4. Crea una cuenta en SparkPost y mándate un mail de bienvenida al sistema
@@ -11,7 +14,7 @@ package es.josemasaborido.sprint1.ejercicio5.entities;
 public class Ciudad {
 
     //ATRIBUTOS
-    private Long idCiudad;
+    private  static Long idCiudad = 0L;
     private String ciudad;
 
     //Relaciones
@@ -22,11 +25,11 @@ public class Ciudad {
 
     /**
      * Constructor con todos los parametros
-     * @param idCiudad id de la ciudad
+
      * @param ciudad nombre de la ciudad
      */
-    public Ciudad(Long idCiudad, String ciudad) {
-        this.idCiudad = idCiudad;
+    public Ciudad(String ciudad) {
+        this.idCiudad = GeneradorId.generarId(idCiudad);
         this.ciudad = ciudad;
     }
 

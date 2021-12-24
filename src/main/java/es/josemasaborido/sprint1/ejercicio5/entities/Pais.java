@@ -1,5 +1,7 @@
 package es.josemasaborido.sprint1.ejercicio5.entities;
 
+import es.josemasaborido.sprint1.ejercicio5.persistencia.GeneradorId;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class Pais{
 
     //ATRIBUTOS
 
-    private Long idPais;
+    private static Long idPais = 0L;
     private String pais;
     private List<Ciudad> ciudades = new ArrayList<>();
 
@@ -23,11 +25,10 @@ public class Pais{
 
     /**
      * Constructor con atributos
-     * @param idPais id del pais
      * @param pais nombre del pais
      */
-    public Pais(Long idPais, String pais) {
-        this.idPais = idPais;
+    public Pais(String pais) {
+        this.idPais = GeneradorId.generarId(idPais);
         this.pais = pais;
     }
 

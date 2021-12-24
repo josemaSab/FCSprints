@@ -1,4 +1,4 @@
-package es.josemasaborido.sprint1.ejercicio5.entities;
+package es.josemasaborido.sprint1.ejercicio5.entities.enums;
 /**
  * Ejercicio  Sprint 1 de Fisrt Commit
  *
