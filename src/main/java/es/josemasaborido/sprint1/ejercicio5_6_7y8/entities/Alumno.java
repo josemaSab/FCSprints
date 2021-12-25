@@ -58,6 +58,22 @@ public class Alumno {
         this.curriculum = curriculum;
     }
 
+    @Override
+    public String toString() {
+        return "Alumno{" +
+                "nombreAlumno='" + nombreAlumno + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", emailAlumno='" + emailAlumno + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", presencialidad=" + presencialidad +
+                ", traslado=" + traslado +
+                ", foto='" + foto + '\'' +
+                ", curriculum='" + curriculum + '\'' +
+                ", certificaciones=" + certificaciones +
+                ", ciudad=" + ciudad +
+                '}';
+    }
+
     //GETTER Y SETTER
 
 

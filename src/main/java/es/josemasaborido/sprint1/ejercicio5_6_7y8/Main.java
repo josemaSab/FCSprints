@@ -2,9 +2,11 @@ package es.josemasaborido.sprint1.ejercicio5_6_7y8;
 
 import es.josemasaborido.sprint1.ejercicio5_6_7y8.entities.*;
 import es.josemasaborido.sprint1.ejercicio5_6_7y8.entities.enums.Presencialidad;
+import es.josemasaborido.sprint1.ejercicio5_6_7y8.persistencia.CandidatosList;
 import es.josemasaborido.sprint1.ejercicio5_6_7y8.security.HashArgon2;
 import es.josemasaborido.sprint1.ejercicio5_6_7y8.services.GeneradorPDFService;
 import es.josemasaborido.sprint1.ejercicio5_6_7y8.services.UsuarioService;
+
 
 import java.io.File;
 import java.util.ArrayList;
@@ -96,7 +98,7 @@ public class Main {
         alumno3.getCertificaciones().add(htmlCss);
         alumno3.getCertificaciones().add(javascript);
         alumno3.getCertificaciones().add(react);
-        alumno3.setCiudad(gijon);
+        alumno3.setCiudad(cadiz);
 
         Alumno alumno4 = new Alumno("Antonio", "Diaz", "antd@gmail.com.com", "607666555",
                 Presencialidad.REOMOTO, false, "foto4", "curriculumAlumno4");
@@ -104,13 +106,13 @@ public class Main {
         alumno4.getCertificaciones().add(javascript);
         alumno4.getCertificaciones().add(java);
         alumno4.getCertificaciones().add(spring);
-        alumno4.setCiudad(malaga);
+        alumno4.setCiudad(cadiz);
 
         Alumno alumno5 = new Alumno("Ludovic", "Pante", "lpante@hotmail.com", "688777454",
                 Presencialidad.PRESENCIAL, true, "foto5", "curriculumAlumno5");
         alumno5.getCertificaciones().add(java);
         alumno5.getCertificaciones().add(spring);
-        alumno5.setCiudad(cadiz);
+        alumno5.setCiudad(paris);
 
         Alumno alumno6 = new Alumno("Joao", "Zeno", "joao@gmail.com.com", "674555222",
                 Presencialidad.REOMOTO, false, "foto6", "curriculumAlumno6");
@@ -118,7 +120,7 @@ public class Main {
         alumno6.getCertificaciones().add(javascript);
         alumno6.getCertificaciones().add(java);
         alumno6.getCertificaciones().add(spring);
-        alumno6.setCiudad(cadiz);
+        alumno6.setCiudad(portimao);
 
         //CREACION DE USUARIOS
 
@@ -156,12 +158,52 @@ public class Main {
         //LOGIN USUARIOS
 
         usuarioService.login(admin1);
-
+        System.out.println("-------------EJERCICIO 6 ------------------");
         //GENERAR PDF
         String rutaPDF1 = ".\\src\\main\\java\\es\\josemasaborido\\sprint1\\ejercicio5_6_7y8\\curriculum\\" + alumno1.getNombreAlumno() + ".pdf";
         System.out.println(rutaPDF1);
         GeneradorPDFService generadorPDFService = new GeneradorPDFService(rutaPDF1);
         generadorPDFService.crearPDFCandidato(new File(rutaPDF1),alumno1);
+
+        System.out.println("\n-------------EJERCICIO 7 ------------------\n");
+        CandidatosList candidatosList = new CandidatosList();
+        candidatosList.addCandidato(alumno1);
+        candidatosList.addCandidato(alumno2);
+        candidatosList.addCandidato(alumno3);
+        candidatosList.addCandidato(alumno4);
+        candidatosList.addCandidato(alumno5);
+        candidatosList.addCandidato(alumno6);
+        System.out.println("\n---------------- BUSCAR POR FILTROS ---------------\n");
+        String ciudadElegida="Cádiz";
+        System.out.println("Filtro por ciudad " + ciudadElegida +": ");
+        for(Alumno u:candidatosList.filtrar("Cádiz")){
+            System.out.println("* " + u.getNombreAlumno() + " "+ u.getApellidos());
+        }
+        System.out.println("-----------------------");
+        String presencialidadElegida = "Remoto";
+        System.out.println("Filtro por presencialidad " + presencialidadElegida + ": ");
+        for(Alumno u:candidatosList.filtrarPresencialidad(presencialidadElegida)){
+            System.out.println("* " + u.getNombreAlumno() + " "+ u.getApellidos());
+
+        }
+        System.out.println("-----------------------");
+        boolean trasladoElegido = false;
+        System.out.println("Filtro por tipo de traslado " + trasladoElegido + ": ");
+        for(Alumno u:candidatosList.filtrar(trasladoElegido)){
+            System.out.println("* " + u.getNombreAlumno() + " "+ u.getApellidos());
+
+        }
+        System.out.println("-----------------------");
+        System.out.println("Filtro por ciudad " + ciudadElegida + ", presencialidad " + presencialidadElegida + ", tipo de traslado " + trasladoElegido + ": ");
+        for(Alumno u:candidatosList.filtrar(ciudadElegida, presencialidadElegida, trasladoElegido)){
+            System.out.println("* " + u.getNombreAlumno() + " "+ u.getApellidos());
+
+        }
+        System.out.println("-----------------------");
+        System.out.print("Filtro por email: " + candidatosList.buscarEmail("hola@ana.com"));
+        System.out.println("Filtro por telefono: "+ candidatosList.buscarTelefono("688557788"));
+
+        System.out.println("\n-------------EJERCICIO 8 ------------------\n");
 
     }
 

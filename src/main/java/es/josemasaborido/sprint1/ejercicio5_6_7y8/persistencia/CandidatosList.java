@@ -1,10 +1,6 @@
 package es.josemasaborido.sprint1.ejercicio5_6_7y8.persistencia;
 
-import es.josemasaborido.sprint1.ejercicio5_6_7y8.Main;
 import es.josemasaborido.sprint1.ejercicio5_6_7y8.entities.Alumno;
-import es.josemasaborido.sprint1.ejercicio5_6_7y8.entities.Ciudad;
-import es.josemasaborido.sprint1.ejercicio5_6_7y8.entities.Pais;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +43,7 @@ public class CandidatosList {
      */
     public boolean addCandidato(Alumno candidato){
         if(listaCandidatos.add(candidato)){
-            System.out.println("Candidato añadido con exito.");
+            System.out.println("Candidato añadido con exito." + candidato.toString());
             return true;
         }
         System.out.println("Hubo algun problema al añadir un candidato");
@@ -80,7 +76,7 @@ public class CandidatosList {
         for(Alumno a:listaCandidatos){
             //Si el candidato tiene la ciudad lo añade al arrayList
             if(a.getCiudad().getCiudad().equals(nombreCiudad)){
-                listaCandidatos.add(a);
+                alumnosCiudad.add(a);
             }
         }
         return alumnosCiudad;
@@ -96,7 +92,7 @@ public class CandidatosList {
         for(Alumno a:listaCandidatos){
             //Si el candidato tiene la ciudad lo añade al arrayList
             if(a.getPresencialidad().getPresencialidad().contains(presencialidad)){
-                listaCandidatos.add(a);
+                alumnosPresencialidad.add(a);
             }
         }
         return alumnosPresencialidad;
@@ -113,11 +109,68 @@ public class CandidatosList {
         for(Alumno a:listaCandidatos){
             //Si el candidato tiene la ciudad lo añade al arrayList
             if(a.getTraslado()==tipoTraslado){
-                listaCandidatos.add(a);
+                alumnosTraslado.add(a);
             }
         }
         return alumnosTraslado;
     }
+
+    /**
+     * Metodo que busca los alumnos que tienen una ciudad concreta un tipo de presencialidad y un tipo de traslado pasado
+     * por parametros
+     * @param ciudad pasada por parametro
+     * @param presencialidad pasasada por parametro
+     * @param tipoTraslado pasado por parametro
+     * @return listado de alumno que cumple todas las reglas
+     */
+    public List<Alumno> filtrar(String ciudad, String presencialidad, boolean tipoTraslado){
+        List<Alumno> alumnos = new ArrayList<>();
+        for(Alumno a:listaCandidatos){
+            if(a.getTraslado()==tipoTraslado && a.getPresencialidad().getPresencialidad().equals(presencialidad)&&a.getCiudad().getCiudad().equals(ciudad)){
+                alumnos.add(a);
+            }
+        }
+        return alumnos;
+    }
+
+    /**
+     * Metodoq que busca un candiidato por email pasado por parametro
+     * @param email pasado por parametro
+     * @return candidato encontrado o null si no encuentra al candidato
+     */
+    public Alumno buscarEmail(String email){
+        Alumno alumnoEncontrado = null;
+        for(Alumno u:listaCandidatos){
+            if(u.getEmailAlumno().equals(email)){
+                alumnoEncontrado = u;
+            }
+        }
+        return alumnoEncontrado;
+    }
+
+    /**
+     * Metodo que busca un candidato por telefono pasado por parametro
+     * @param telefono pasado por parametro
+     * @return candidato encontrado o null si no encuentra nu¡inguno
+     */
+    public Alumno buscarTelefono(String telefono){
+        Alumno alumnoEncontrado = null;
+        for(Alumno u:listaCandidatos){
+            if(u.getTelefono().equals(telefono)){
+                alumnoEncontrado = u;
+            }
+        }
+        return alumnoEncontrado;
+    }
+
     //GETTER Y SETTER
 
+
+    public static List<Alumno> getListaCandidatos() {
+        return listaCandidatos;
+    }
+
+    public static void setListaCandidatos(List<Alumno> listaCandidatos) {
+        CandidatosList.listaCandidatos = listaCandidatos;
+    }
 }

@@ -2,6 +2,7 @@ package es.josemasaborido.sprint1.ejercicio5_6_7y8.services;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
+import es.josemasaborido.sprint1.ejercicio2y3.ui.Pantallas;
 import es.josemasaborido.sprint1.ejercicio5_6_7y8.entities.Alumno;
 import es.josemasaborido.sprint1.ejercicio5_6_7y8.entities.Certificacion;
 
@@ -56,15 +57,15 @@ public class GeneradorPDFService {
     }
     //METODOS
 
-    public boolean crearPDFCandidato(File ficheroPDF, Alumno candidato) {
+    public void crearPDFCandidato(File ficheroPDF, Alumno candidato) {
         Document documentoPDF = new Document();
         try {
             PdfWriter.getInstance(documentoPDF, new FileOutputStream(ficheroPDF));
 
         } catch (DocumentException e) {
-            System.out.println("Se ha producido un error al generar un documento): " + e.getMessage());;
+            System.err.println("Se ha producido un error al generar un documento): " + e.getMessage());;
         } catch (FileNotFoundException e) {
-            System.out.println("No se encontro el fichero para general rl PDF: " + e.getMessage());
+            System.err.println("No se encontro el fichero para generar el PDF: " + e.getMessage());
         }
         documentoPDF.open();
 
@@ -89,9 +90,9 @@ public class GeneradorPDFService {
             imagen.setAbsolutePosition(400f,520f);
 
         } catch (BadElementException ex) {
-            ex.printStackTrace();
+            System.err.println("No se ha podido insertar la imagen: " + ex.getMessage());;
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.err.println("Hubo un problema: " + ex.getMessage());;
         }
 
         //DATOS PERSONALES
@@ -166,16 +167,13 @@ public class GeneradorPDFService {
             documentoPDF.add(SALTOLINEA);
             documentoPDF.add(SALTOLINEA);
             documentoPDF.add(certificaciones);
+            System.out.println("El documento se creó correctamente");
 
         } catch (DocumentException e) {
-            e.printStackTrace();
+            System.err.println("Ocurrió un problema al crear el documento.");;
         }
-
-
         documentoPDF.close();
 
-
-        return false;
 
     }
 
@@ -185,7 +183,6 @@ public class GeneradorPDFService {
         }else{
             return "NO";
         }
-
     }
 
     //GETTER Y SETTER
