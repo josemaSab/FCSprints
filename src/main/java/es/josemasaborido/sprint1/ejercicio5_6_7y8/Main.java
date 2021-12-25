@@ -23,6 +23,7 @@ import java.util.List;
  * @version 1.0
  */
 public class Main {
+    public static List<Pais> listaPaises = new ArrayList<>();
     public static void main(String[] args) {
         //CREACION DE CIUDADES
 
@@ -57,6 +58,10 @@ public class Main {
         spain.setCiudades(ciudadesSpain);
         francia.setCiudades(ciudadesFrancia);
         portugal.setCiudades(ciudadesPortugal);
+        //Metemos los paises en el arrayList de Paises
+        listaPaises.add(spain);
+        listaPaises.add(francia);
+        listaPaises.add(portugal);
 
         //CREACION DE CERTIFICACIONES
 
@@ -72,7 +77,8 @@ public class Main {
         //CREACION DE ALUMNOS
 
         Alumno alumno1 = new Alumno("Josema", "Saborido", "j@j.com", "678558855",
-                Presencialidad.REOMOTO, false, "foto1", "curriculumAlumno1");
+                Presencialidad.REOMOTO, false,
+                ".\\src\\main\\java\\es\\josemasaborido\\sprint1\\ejercicio5_6_7y8\\curriculum\\img\\Josema.png", "curriculumAlumno1");
         alumno1.getCertificaciones().add(htmlCss);
         alumno1.getCertificaciones().add(javascript);
         alumno1.getCertificaciones().add(java);
@@ -87,32 +93,32 @@ public class Main {
 
         Alumno alumno3 = new Alumno("Ana", "Oroñez", "hola@ana.com", "677552444",
                 Presencialidad.PRESENCIAL, false, "foto3", "curriculumAlumno3");
-        alumno1.getCertificaciones().add(htmlCss);
-        alumno1.getCertificaciones().add(javascript);
-        alumno1.getCertificaciones().add(react);
-        alumno1.setCiudad(gijon);
+        alumno3.getCertificaciones().add(htmlCss);
+        alumno3.getCertificaciones().add(javascript);
+        alumno3.getCertificaciones().add(react);
+        alumno3.setCiudad(gijon);
 
         Alumno alumno4 = new Alumno("Antonio", "Diaz", "antd@gmail.com.com", "607666555",
                 Presencialidad.REOMOTO, false, "foto4", "curriculumAlumno4");
-        alumno1.getCertificaciones().add(htmlCss);
-        alumno1.getCertificaciones().add(javascript);
-        alumno1.getCertificaciones().add(java);
-        alumno1.getCertificaciones().add(spring);
-        alumno1.setCiudad(malaga);
+        alumno4.getCertificaciones().add(htmlCss);
+        alumno4.getCertificaciones().add(javascript);
+        alumno4.getCertificaciones().add(java);
+        alumno4.getCertificaciones().add(spring);
+        alumno4.setCiudad(malaga);
 
         Alumno alumno5 = new Alumno("Ludovic", "Pante", "lpante@hotmail.com", "688777454",
                 Presencialidad.PRESENCIAL, true, "foto5", "curriculumAlumno5");
-        alumno1.getCertificaciones().add(java);
-        alumno1.getCertificaciones().add(spring);
-        alumno1.setCiudad(cadiz);
+        alumno5.getCertificaciones().add(java);
+        alumno5.getCertificaciones().add(spring);
+        alumno5.setCiudad(cadiz);
 
         Alumno alumno6 = new Alumno("Joao", "Zeno", "joao@gmail.com.com", "674555222",
                 Presencialidad.REOMOTO, false, "foto6", "curriculumAlumno6");
-        alumno1.getCertificaciones().add(htmlCss);
-        alumno1.getCertificaciones().add(javascript);
-        alumno1.getCertificaciones().add(java);
-        alumno1.getCertificaciones().add(spring);
-        alumno1.setCiudad(cadiz);
+        alumno6.getCertificaciones().add(htmlCss);
+        alumno6.getCertificaciones().add(javascript);
+        alumno6.getCertificaciones().add(java);
+        alumno6.getCertificaciones().add(spring);
+        alumno6.setCiudad(cadiz);
 
         //CREACION DE USUARIOS
 
@@ -152,8 +158,7 @@ public class Main {
         usuarioService.login(admin1);
 
         //GENERAR PDF
-        String rutaPDF1 = "/media/josema/DATOS/Usuarios/Josema_000/IdeaProjects/FCSprints/src/main/java/es/josemasaborido/sprint1/ejercicio5_6_7y8/curriculum/"
-                + alumno1.getNombreAlumno() + ".pdf";
+        String rutaPDF1 = ".\\src\\main\\java\\es\\josemasaborido\\sprint1\\ejercicio5_6_7y8\\curriculum\\" + alumno1.getNombreAlumno() + ".pdf";
         System.out.println(rutaPDF1);
         GeneradorPDFService generadorPDFService = new GeneradorPDFService(rutaPDF1);
         generadorPDFService.crearPDFCandidato(new File(rutaPDF1),alumno1);
