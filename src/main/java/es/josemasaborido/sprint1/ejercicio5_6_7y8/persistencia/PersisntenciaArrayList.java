@@ -1,6 +1,6 @@
-package es.josemasaborido.sprint1.ejercicio5.persistencia;
+package es.josemasaborido.sprint1.ejercicio5_6_7y8.persistencia;
 
-import es.josemasaborido.sprint1.ejercicio5.entities.Usuario;
+import es.josemasaborido.sprint1.ejercicio5_6_7y8.entities.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;

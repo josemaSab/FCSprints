@@ -1,7 +1,7 @@
-package es.josemasaborido.sprint1.ejercicio5.entities;
+package es.josemasaborido.sprint1.ejercicio5_6_7y8.entities;
 
-import es.josemasaborido.sprint1.ejercicio5.entities.enums.Presencialidad;
-import es.josemasaborido.sprint1.ejercicio5.persistencia.GeneradorId;
+import es.josemasaborido.sprint1.ejercicio5_6_7y8.entities.enums.Presencialidad;
+import es.josemasaborido.sprint1.ejercicio5_6_7y8.persistencia.GeneradorId;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,13 +1,12 @@
-package es.josemasaborido.sprint1.ejercicio5;
+package es.josemasaborido.sprint1.ejercicio5_6_7y8;
 
-import es.josemasaborido.sprint1.ejercicio5.entities.*;
-import es.josemasaborido.sprint1.ejercicio5.entities.enums.Presencialidad;
-import es.josemasaborido.sprint1.ejercicio5.persistencia.PersisntenciaArrayList;
-import es.josemasaborido.sprint1.ejercicio5.security.HashArgon2;
-import es.josemasaborido.sprint1.ejercicio5.security.HashMD5;
-import es.josemasaborido.sprint1.ejercicio5.security.PasswordHasheable;
-import es.josemasaborido.sprint1.ejercicio5.services.UsuarioService;
+import es.josemasaborido.sprint1.ejercicio5_6_7y8.entities.*;
+import es.josemasaborido.sprint1.ejercicio5_6_7y8.entities.enums.Presencialidad;
+import es.josemasaborido.sprint1.ejercicio5_6_7y8.security.HashArgon2;
+import es.josemasaborido.sprint1.ejercicio5_6_7y8.services.GeneradorPDFService;
+import es.josemasaborido.sprint1.ejercicio5_6_7y8.services.UsuarioService;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -151,6 +150,14 @@ public class Main {
         //LOGIN USUARIOS
 
         usuarioService.login(admin1);
+
+        //GENERAR PDF
+        String rutaPDF1 = "/media/josema/DATOS/Usuarios/Josema_000/IdeaProjects/FCSprints/src/main/java/es/josemasaborido/sprint1/ejercicio5_6_7y8/curriculum/"
+                + alumno1.getNombreAlumno() + ".pdf";
+        System.out.println(rutaPDF1);
+        GeneradorPDFService generadorPDFService = new GeneradorPDFService(rutaPDF1);
+        generadorPDFService.crearPDFCandidato(new File(rutaPDF1),alumno1);
+
     }
 
 

@@ -1,4 +1,4 @@
-package es.josemasaborido.sprint1.ejercicio5.persistencia;
+package es.josemasaborido.sprint1.ejercicio5_6_7y8.persistencia;
 /**
  * Ejercicio 5 Sprint 1 de Fisrt Commit
  *

@@ -1,10 +1,8 @@
-package es.josemasaborido.sprint1.ejercicio5.services;
+package es.josemasaborido.sprint1.ejercicio5_6_7y8.services;
 
-import es.josemasaborido.sprint1.ejercicio5.entities.Usuario;
-import es.josemasaborido.sprint1.ejercicio5.persistencia.TipoAlmacenamiento;
-import es.josemasaborido.sprint1.ejercicio5.security.PasswordHasheable;
+import es.josemasaborido.sprint1.ejercicio5_6_7y8.entities.Usuario;
+import es.josemasaborido.sprint1.ejercicio5_6_7y8.security.PasswordHasheable;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
