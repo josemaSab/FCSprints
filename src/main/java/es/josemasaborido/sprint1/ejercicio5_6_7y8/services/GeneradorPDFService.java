@@ -63,8 +63,8 @@ public class GeneradorPDFService {
         documentoPDF.addTitle("Curriculum de candidato: " + candidato.getNombreAlumno() +" " + candidato.getApellidos());
         documentoPDF.addAuthor("Josema Saborido");
 
-        Chunk tituloPrincipal = new Chunk("CURRICULUM VITAE", TITULO);
-        Chunk tituloSecundario = new Chunk(candidato.getNombreAlumno() + " " + candidato.getApellidos(), TITULO2);
+        Chunk tituloPrincipal = new Chunk("CURRICULUM VITAE ", TITULO2);
+        Chunk tituloSecundario = new Chunk(candidato.getNombreAlumno() + " " + candidato.getApellidos(), TITULO);
 
 
         try {
