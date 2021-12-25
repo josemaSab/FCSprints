@@ -64,6 +64,12 @@ public class Main {
         listaPaises.add(spain);
         listaPaises.add(francia);
         listaPaises.add(portugal);
+        cadiz.setPais(spain);
+        gijon.setPais(spain);
+        malaga.setPais(spain);
+        paris.setPais(francia);
+        portimao.setPais(portugal);
+        lisboa.setPais(portugal);
 
         //CREACION DE CERTIFICACIONES
 
@@ -204,6 +210,18 @@ public class Main {
         System.out.println("Filtro por telefono: "+ candidatosList.buscarTelefono("688557788"));
 
         System.out.println("\n-------------EJERCICIO 8 ------------------\n");
+        candidatosList.imprimeCiudadesTop();
+        candidatosList.imprimePaisesTop();
+        System.out.println("\n\n IMPRIME TOTAL CANDIDATOS EN REMOTO");
+        System.out.println("------------------------------------\n");
+        System.out.println("Candidatos en remoto: " + candidatosList.totalRemotos());
+        System.out.println("\n\n IMPRIME TOTAL CANDIDATOS CON POSIBILIDAD DE TRASLADO");
+        System.out.println("------------------------------------------------------------\n");
+        System.out.println("Candidatos con posibilidad de traslado: " + candidatosList.totalPosibilidadTraslado());
+        System.out.println("\n\n IMPRIME TOTAL CANDIDATOS QUE NO TIENEN POSIBILIDAD DE TRASLADO");
+        System.out.println("----------------------------------------------------------------------\n");
+        System.out.println("Candidatos que no tienen posibilidad de traslado: " + candidatosList.totalNoPosibilidadTraslado());
+
 
     }
 
