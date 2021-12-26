@@ -14,6 +14,7 @@ import java.util.List;
  * @author josema
  * @version 1.0
  */
+@Deprecated
 public class PersisntenciaArrayList implements TipoAlmacenamiento<Usuario>{
 
     //ATRIBUTOS
