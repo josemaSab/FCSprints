@@ -86,7 +86,7 @@ public class Main {
 
         Alumno alumno1 = new Alumno("Josema", "Saborido", "j@j.com", "678558855",
                 Presencialidad.REOMOTO, false,
-                ".\\src\\main\\java\\es\\josemasaborido\\sprint1\\ejercicio5_6_7y8\\curriculum\\img\\Josema.png", "curriculumAlumno1");
+                "/media/josema/DATOS/Usuarios/Josema_000/IdeaProjects/FCSprints/src/main/java/es/josemasaborido/sprint1/ejercicio5_6_7y8/curriculum/img/Josema.png", "curriculumAlumno1");
         alumno1.getCertificaciones().add(htmlCss);
         alumno1.getCertificaciones().add(javascript);
         alumno1.getCertificaciones().add(java);
@@ -166,7 +166,7 @@ public class Main {
         usuarioService.login(admin1);
         System.out.println("-------------EJERCICIO 6 ------------------");
         //GENERAR PDF
-        String rutaPDF1 = ".\\src\\main\\java\\es\\josemasaborido\\sprint1\\ejercicio5_6_7y8\\curriculum\\" + alumno1.getNombreAlumno() + ".pdf";
+        String rutaPDF1 = "/media/josema/DATOS/Usuarios/Josema_000/IdeaProjects/FCSprints/src/main/java/es/josemasaborido/sprint1/ejercicio5_6_7y8/curriculum/" + alumno1.getNombreAlumno() + ".pdf";
         System.out.println(rutaPDF1);
         GeneradorPDFService generadorPDFService = new GeneradorPDFService(rutaPDF1);
         generadorPDFService.crearPDFCandidato(new File(rutaPDF1),alumno1);
